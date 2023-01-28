@@ -19,7 +19,7 @@ App:
 - Renders a TaskLogger component as well as an Overview component
 - Has a logTask method that changes the state of the taskArray (make sure to bind everything properly)
 - Passes logTask to child TaskLogger in props while rendering it (make sure to bind everything properly)
-- Passes taskArray to Overview in state while rendering it
+- Passes taskArray to Overview in props while rendering it
 
 TaskLogger:
 - Renders a text input
