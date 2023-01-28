@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TaskLogger from './components/TaskLogger';
+import Overview from './components/Overview';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,9 @@ class App extends Component {
       <div className="App">
         <TaskLogger
           onTaskSubmission={this.addTask}
+        />
+        <Overview
+          taskArray={this.state.taskArray}
         />
       </div>
     );
