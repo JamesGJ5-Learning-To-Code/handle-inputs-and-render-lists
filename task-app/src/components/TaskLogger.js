@@ -12,6 +12,7 @@ class TaskLogger extends Component {
         return (
             <div className='TaskLogger'>
                 {this.taskInput}
+                <button type='button'>Add</button>
             </div>
         )
     }
