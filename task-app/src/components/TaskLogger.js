@@ -11,7 +11,9 @@ class TaskLogger extends Component {
         this.handleSubmission = this.handleSubmission.bind(this);
     }
     // TODO: consider making the input a child component and making its value 
-    // into state, this state being held by the TaskLogger
+    // into state, this state being held by the TaskLogger. In fact, The Odin 
+    // Project's version does this, although in a less modular fashion--see 
+    // https://www.theodinproject.com/lessons/node-path-javascript-handle-inputs-and-render-lists
     handleSubmission(event) {
         const taskInput = this._getTaskInput(event);
         const taskString = taskInput.value;
