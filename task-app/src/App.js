@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import TaskLogger from './components/TaskLogger';
 import Overview from './components/Overview';
+import uniqid from 'uniqid';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskArray: []
+      taskAndIDArray: []
     };
     this.addTask = this.addTask.bind(this);
   }
   addTask(taskString) {
     this.setState((currentState) => ({
-      taskArray: currentState.taskArray.concat(taskString)
+      // Unique ID alongside for later mapping while rendering
+      taskAndIDArray: currentState.taskAndIDArray.concat([[taskString, uniqid()]])
     }));
   }
   render() {
@@ -22,7 +24,7 @@ class App extends Component {
           onTaskSubmission={this.addTask}
         />
         <Overview
-          taskArray={this.state.taskArray}
+          taskAndIDArray={this.state.taskAndIDArray}
         />
       </div>
     );
