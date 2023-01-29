@@ -7,9 +7,19 @@ class Overview extends Component {
         return (
             <ul className='Overview' style={{listStyleType: 'none'}}>
                 {taskArray.map((taskString, index) => {
-                    return <li key={uniqid()}>
-                        {(index + 1).toString() + '. ' + taskString}
-                    </li>
+                    return(
+                        <li
+                            key={uniqid()}
+                        >
+                            {(index + 1).toString() + '. ' + taskString}
+                            <button
+                                type='button'
+                                dataIndex={index.toString()}
+                            >
+                                asfasfd
+                            </button>
+                        </li>
+                    )
                 })}
             </ul>
         );
