@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 
 class Overview extends Component {
     render() {
-        const taskAndIDArray = this.props.taskAndIDArray;
+        const taskArray = this.props.taskArray;
         return (
             <ul className='Overview' style={{listStyleType: 'none'}}>
-                {/* TODO: use uniqid for unique ID's like at
-                https://www.theodinproject.com/lessons/node-path-javascript-handle-inputs-and-render-lists */}
-                {taskAndIDArray.map((pair, index) => {
-                    const taskString = pair[0];
-                    const uniqueID = pair[1];
-                    return <li key={uniqueID}>
+                {taskArray.map((taskString, index) => {
+                    return <li key={uniqid()}>
                         {(index + 1).toString() + '. ' + taskString}
                     </li>
                 })}
