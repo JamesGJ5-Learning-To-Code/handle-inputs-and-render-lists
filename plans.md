@@ -46,3 +46,9 @@ Overview:
 -- In Overview's render method, put the callback as an onChange in the returned input
 -- Might as well initialise the input with a value equal to the initialise state's pendingTaskString value, since this might facilitate persistence later
 -- Change handleSubmission accordingly to get value from state now
+
+- DONE Display each task next to a number (from 1 onwards, much like in a basic ordered list) in what Overview renders
+-- Manage the number of tasks in-state to enable this
+--- Instead of doing the above explicitly, I am going to continue to let the length of taskAndIDArray to do this for me, and use this length to do the numbering, in order to avoid repeating code; so, only changes to the map in Overview need to be made
+-- For the sake of practice, don't use an ordered list
+-- Remove bullets from default styling
