@@ -31,3 +31,11 @@ TaskLogger:
 Overview:
 - Renders an unordered list:
 -- Contains <li> elements that are mapped from the contents of props.taskArray
+
+# Further plans:
+
+- Ensure the key passed to each <li> when Overview renders is truly unique:
+-- Install the uniqid module
+-- Import the function 'uniqid' from the uniqid module (this function, when called, simply returns the unique ID)
+-- In addTask, instead of simply adding the taskString to the taskArray, add a sub-array containing the taskString and the uniqueID
+-- In the mapping in Overview's render function, amend things to the new format
