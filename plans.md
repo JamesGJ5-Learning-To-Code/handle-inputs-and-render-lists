@@ -11,7 +11,7 @@
 - Tip:
 -- Use the map function to map over your tasks array
 
-# From me:
+# DONE Minimum viable product:
 
 App:
 - Parent of TaskLogger (input + submit combination) and Overview (where tasks are displayed)
