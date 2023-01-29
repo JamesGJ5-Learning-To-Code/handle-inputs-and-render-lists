@@ -3,24 +3,28 @@ import React, { Component } from 'react';
 class TaskLogger extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            pendingTaskString: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
     }
-    // TODO: consider making the input a child component and making its value 
-    // into state, this state being held by the TaskLogger. In fact, The Odin 
-    // Project's version does this, although in a less modular fashion--see 
-    // https://www.theodinproject.com/lessons/node-path-javascript-handle-inputs-and-render-lists
-    handleSubmission(event) {
-        const taskInput = this._getTaskInput(event);
-        const taskString = taskInput.value;
-        if (taskString) {
-            this.props.onTaskSubmission(taskInput.value);
-            taskInput.value = '';
-        }
+    handleChange(event) {
+        const newTaskString = event.target.value;
+        this.setState({
+            pendingTaskString: newTaskString
+        });
 
     }
-    _getTaskInput(event) {
-        const taskLoggerDiv = event.target.closest('.TaskLogger');
-        return taskLoggerDiv.querySelector('.TaskInput');
+    handleSubmission(event) {
+        const pendingTaskString = this.state.pendingTaskString;
+        if (pendingTaskString) {
+            this.props.onTaskSubmission(pendingTaskString);
+            this.setState({
+                pendingTaskString: ''
+            })
+        }
+
     }
     render() {
         return (
@@ -28,7 +32,9 @@ class TaskLogger extends Component {
                 <input
                     type='text'
                     className = 'TaskInput'
+                    value = {this.state.pendingTaskString}
                     placeholder='Type task name...'
+                    onChange={this.handleChange}
                 />
                 <button
                     type='button'

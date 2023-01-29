@@ -39,3 +39,10 @@ Overview:
 -- Import the function 'uniqid' from the uniqid module (this function, when called, simply returns the unique ID)
 -- In addTask, instead of simply adding the taskString to the taskArray, add a sub-array containing the taskString and the uniqueID
 -- In the mapping in Overview's render function, amend things to the new format
+
+- DONE Manage the value of input in state; for now, this would be in TaskLogger's state, since this value is not needed explicitly by Overview, for example--the value will essentially be saved to the App's taskAndIDArray if it is satisfactory
+-- Initialise this state, pendingTaskString, as '' in TaskLogger's constructor
+-- Define a TaskLogger method handleChange which takes an event (since it will be a callback) as parameter; each time it is called, newValue will be found from event.target and saved to state.pendingTaskString (via setState)
+-- In Overview's render method, put the callback as an onChange in the returned input
+-- Might as well initialise the input with a value equal to the initialise state's pendingTaskString value, since this might facilitate persistence later
+-- Change handleSubmission accordingly to get value from state now
