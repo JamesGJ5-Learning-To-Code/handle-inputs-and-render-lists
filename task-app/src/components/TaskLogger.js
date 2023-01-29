@@ -3,11 +3,6 @@ import React, { Component } from 'react';
 class TaskLogger extends Component {
     constructor(props) {
         super(props);
-        this.taskInput = <input
-            type='text'
-            className = 'TaskInput'
-            placeholder='Type task name...'
-        />
         this.handleSubmission = this.handleSubmission.bind(this);
     }
     // TODO: consider making the input a child component and making its value 
@@ -30,7 +25,11 @@ class TaskLogger extends Component {
     render() {
         return (
             <div className='TaskLogger'>
-                {this.taskInput}
+                <input
+                    type='text'
+                    className = 'TaskInput'
+                    placeholder='Type task name...'
+                />
                 <button
                     type='button'
                     onClick={this.handleSubmission}
