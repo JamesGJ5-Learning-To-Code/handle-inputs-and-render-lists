@@ -9,11 +9,17 @@ class App extends Component {
       taskArray: []
     };
     this.addTask = this.addTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
   addTask(taskString) {
     this.setState((currentState) => ({
       // Unique ID alongside for later mapping while rendering
       taskArray: currentState.taskArray.concat(taskString)
+    }));
+  }
+  deleteTask(index) {
+    this.setState((currentState) => ({
+      taskArray: currentState.taskArray.slice(0, index).concat(currentState.taskArray.slice(index + 1))
     }));
   }
   render() {
@@ -24,6 +30,7 @@ class App extends Component {
         />
         <Overview
           taskArray={this.state.taskArray}
+          onTaskDeletion={this.deleteTask}
         />
       </div>
     );

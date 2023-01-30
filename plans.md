@@ -52,3 +52,5 @@ Overview:
 --- Instead of doing the above explicitly, I am going to continue to let the length of taskAndIDArray to do this for me, and use this length to do the numbering, in order to avoid repeating code; so, only changes to the map in Overview need to be made
 -- For the sake of practice, don't use an ordered list
 -- Remove bullets from default styling
+
+- DONE Permit task deletion

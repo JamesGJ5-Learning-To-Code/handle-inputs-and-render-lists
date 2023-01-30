@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import uniqid from 'uniqid';
 
 class Overview extends Component {
+    constructor(props) {
+        super(props);
+        this.handleDeletion = this.handleDeletion.bind(this);
+    }
+    handleDeletion(event) {
+        const index = parseInt(event.target.getAttribute('dataindex'));
+        console.log(index);
+        this.props.onTaskDeletion(index);
+    }
     render() {
         const taskArray = this.props.taskArray;
+        // TODO: consider making task rows into their own component
         return (
             <ul className='Overview' style={{listStyleType: 'none'}}>
                 {taskArray.map((taskString, index) => {
@@ -14,9 +24,10 @@ class Overview extends Component {
                             {(index + 1).toString() + '. ' + taskString}
                             <button
                                 type='button'
-                                dataIndex={index.toString()}
+                                dataindex={index.toString()}
+                                onClick={this.handleDeletion}
                             >
-                                asfasfd
+                                Delete
                             </button>
                         </li>
                     )
