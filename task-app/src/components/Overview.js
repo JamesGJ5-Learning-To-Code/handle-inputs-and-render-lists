@@ -11,9 +11,9 @@ class Overview extends Component {
         if (!event.target.classList.contains('active')) {
             this.enableResubmission(event);
         }
-        // else {
-        //     this.handleResubmission(event);
-        // }
+        else {
+            this.handleResubmission(event);
+        }
     }
     enableResubmission(event) {
         this.markActive(event);
@@ -32,7 +32,16 @@ class Overview extends Component {
         newInput.placeholder = 'New task name...';
         parent.appendChild(newInput);
     }
-    // handleResubmission(event) {}
+    handleResubmission(event) {
+        const newTaskString = this.getNewTaskInput(event).value;
+        const taskArrayIndex = parseInt(event.target.getAttribute('data-index'));
+        if (newTaskString) {
+            this.props.onTaskResubmission(newTaskString, taskArrayIndex);
+        }
+    }
+    getNewTaskInput(event) {
+        return event.target.closest('li').querySelector('input')
+    }
     handleDeletion(event) {
         const index = parseInt(event.target.getAttribute('data-index'));
         console.log(index);
