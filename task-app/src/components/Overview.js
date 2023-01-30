@@ -8,7 +8,7 @@ class Overview extends Component {
         this.handleDeletion = this.handleDeletion.bind(this);
     }
     handleEditButtonClick(event) {
-        if (event.target.getAttribute('data-active') === 'false') {
+        if (!event.target.classList.contains('active')) {
             this.enableResubmission(event);
         }
         // else {
@@ -16,8 +16,11 @@ class Overview extends Component {
         // }
     }
     enableResubmission(event) {
-        event.target.setAttribute('data-active', 'true');
+        this.markActive(event);
         event.target.textContent = 'Resubmit'
+    }
+    markActive(event) {
+        event.target.classList.add('active');
     }
     // handleResubmission(event) {}
     handleDeletion(event) {
@@ -40,7 +43,6 @@ class Overview extends Component {
                             into their own components */}
                             <button
                                 type='button'
-                                data-active='false'
                                 data-index={index.toString()}
                                 onClick={this.handleEditButtonClick}
                             >
