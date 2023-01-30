@@ -9,10 +9,14 @@ class App extends Component {
       taskArray: []
     };
     this.appendTask = this.appendTask.bind(this);
+    this.editTask = this.editTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
   appendTask(taskString) {
     this.insertTask(taskString, this.state.taskArray.length, false);
+  }
+  editTask(newTaskString, index) {
+    this.insertTask(newTaskString, index, true);
   }
   insertTask(taskString, newIndex, replace) {
     // replace is true if the taskString initially at index position newIndex is to be replaced, false if it is not to be
@@ -33,6 +37,7 @@ class App extends Component {
         />
         <Overview
           taskArray={this.state.taskArray}
+          onTaskResubmission={this.editTask}
           onTaskDeletion={this.deleteTask}
         />
       </div>
