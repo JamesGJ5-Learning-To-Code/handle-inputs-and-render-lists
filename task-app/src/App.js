@@ -8,13 +8,16 @@ class App extends Component {
     this.state = {
       taskArray: []
     };
-    this.addTask = this.addTask.bind(this);
+    this.appendTask = this.appendTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
-  addTask(taskString) {
+  appendTask(taskString) {
+    this.insertTask(taskString, this.state.taskArray.length, false);
+  }
+  insertTask(taskString, newIndex, replace) {
+    // replace is true if the taskString initially at index position newIndex is to be replaced, false if it is not to be
     this.setState((currentState) => ({
-      // Unique ID alongside for later mapping while rendering
-      taskArray: currentState.taskArray.concat(taskString)
+      taskArray: currentState.taskArray.slice(0, newIndex).concat(taskString, currentState.taskArray.slice(newIndex + replace))
     }));
   }
   deleteTask(index) {
@@ -26,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <TaskLogger
-          onTaskSubmission={this.addTask}
+          onTaskSubmission={this.appendTask}
         />
         <Overview
           taskArray={this.state.taskArray}
