@@ -54,3 +54,17 @@ Overview:
 -- Remove bullets from default styling
 
 - DONE Permit task deletion
+
+- DONE Implement an edit button for each task
+-- Clicking the edit button makes the specific task changeable
+-- The edit button should change to a resubmit button
+-- Workflow:
+-- 1. Click the edit button and it swaps to a resubmit button (or at least the text changes temporarily).
+--- The button should, like the delete button, have its own dataIndex attribute
+--- Let's change the text rather than rendering a new button; therefore, the button should have an onClick event listener that has a callback that determines whether the edit button is active (i.e. a resubmission is to be done) or not before calling an appropriate subsequent callback (either for resubmission or enabling resubmission)
+--- To enable the above callbacks to be chosen from, an 'active' should be added to the classlist of the button 
+-- 2. So that we can keep the App modular and not have to rely on the TaskLogger (which is another child of App), clicking the edit button brings up an input for writing a new taskString
+--- Make sure the new input comes up within the same <li> element, so that clicking the delete button in the meantime still works
+-- 3. Resubmit button only works if the input mentioned is not empty
+-- 4. When clicking the resubmit button works, the taskString replaces the taskString that's already at the index dataindex in the taskArray in App's state
+-- 5. Write TODO to make edit button, for example, into its own component perhaps
