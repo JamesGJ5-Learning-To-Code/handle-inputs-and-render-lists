@@ -17,10 +17,20 @@ class Overview extends Component {
     }
     enableResubmission(event) {
         this.markActive(event);
-        event.target.textContent = 'Resubmit'
+        this.enableInput(event);
     }
     markActive(event) {
         event.target.classList.add('active');
+        event.target.textContent = 'Resubmit'
+    }
+    enableInput(event) {
+        const li = event.target.closest('li');
+        this.appendInputElement(li);
+    }
+    appendInputElement(parent) {
+        const newInput = document.createElement('input');
+        newInput.placeholder = 'New task name...';
+        parent.appendChild(newInput);
     }
     // handleResubmission(event) {}
     handleDeletion(event) {
