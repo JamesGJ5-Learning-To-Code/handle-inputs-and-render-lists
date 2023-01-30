@@ -4,10 +4,14 @@ import uniqid from 'uniqid';
 class Overview extends Component {
     constructor(props) {
         super(props);
+        // this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
         this.handleDeletion = this.handleDeletion.bind(this);
     }
+    // handleEditButtonClick(event) {
+    //     if 
+    // }
     handleDeletion(event) {
-        const index = parseInt(event.target.getAttribute('dataindex'));
+        const index = parseInt(event.target.getAttribute('data-index'));
         console.log(index);
         this.props.onTaskDeletion(index);
     }
@@ -22,9 +26,18 @@ class Overview extends Component {
                             key={uniqid()}
                         >
                             {(index + 1).toString() + '. ' + taskString}
+                            {/* TODO: consider making edit and deletion buttons 
+                            into their own components */}
+                            {/* <button
+                                type='button'
+                                data-index={index.toString()}
+                                onClick={this.handleEditButtonClick}
+                            >
+                                Edit
+                            </button> */}
                             <button
                                 type='button'
-                                dataindex={index.toString()}
+                                data-index={index.toString()}
                                 onClick={this.handleDeletion}
                             >
                                 Delete
