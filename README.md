@@ -1,0 +1,1 @@
+Primitive project made to learn to handle inputs and render out lists in React. Made when I was still using obsolete class-based components.
